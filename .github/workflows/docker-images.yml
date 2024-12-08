@@ -32,4 +32,7 @@ jobs:
           REPO_LC=lpicode/backrest-docker
           docker buildx create --use
           docker buildx build --platform linux/amd64,linux/arm64 --push -t $REPO_LC:${{ github.sha }} -t $REPO_LC:$BRANCH_NAME .
+          if [ $BRANCH_NAME = "main" ]; then
+            docker buildx build --platform linux/amd64,linux/arm64 --push -t $REPO_LC:latest .
+          fi
 
