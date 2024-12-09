@@ -24,12 +24,6 @@ if ! docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
   exit 1
 fi
 
-# Ensure the backup path exists
-if [[ ! -d "$BACKUP_PATH" ]]; then
-  echo "Error: Backup path '${BACKUP_PATH}' does not exist."
-  exit 1
-fi
-
 # Generate a timestamp for the backup
 BACKUP_DIR="${BACKUP_PATH}"
 mkdir -p "$BACKUP_DIR"
